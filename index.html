@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>to-dos</title>
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav {
+  width: 100%;
+  background: #cbdef1;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav img {
+  max-height: 150px;
+  width: auto;
+  height: auto;
+}
+
+.container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  text-align: left;
+}
+
+h2 {
+   text-align:center;
+    margin-bottom:15px;
+   }
+input[type=text] {
+  padding:10px;
+  width:90%;
+  border:1px solid #ccc;
+  border-radius:5px;
+  margin-bottom:10px;
+}
+
+button {
+  padding:8px 12px;
+  margin:2px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.add-btn { 
+  background:#2196F3;
+   color:#fff;
+   }
+.clear-btn { 
+  background:#ff9800; 
+  color:#fff; 
+}
+/* .up-btn {
+ background:#28a745;
+  color:#fff; } */
+/* .down-btn { 
+background:#ffc107; 
+color:#000;
+ border:1px solid #000;
+  } */
+.delete-btn { 
+  background:#F44336; 
+  color:#fff; }
+/* .reminder-btn { 
+background:#673AB7; 
+color:#fff;
+ } */
+.close-btn {
+  background:#999; 
+  color:#fff; }
+
+ul { 
+  list-style:none;
+  padding:0; 
+  margin-top:20px;
+ }
+
+li.task-card {
+  background: #fafafa;
+  margin-bottom:10px;
+  padding:10px;
+  border-radius:6px;
+  box-shadow:0 2px 5px rgba(0,0,0,0.1);
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.task-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.task-left {
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.done {
+   text-decoration: line-through;
+    color: gray; }
+
+.btn-group button { 
+  font-size:12px;
+}
+
+.reminder-section {
+  display:none;
+  margin-top:5px;
+  flex-direction:row;
+  gap:5px;
+  align-items:center;
+}
+
+.reminder-section input {
+   flex:1; 
+  }
+
+.clear-btn-box { 
+  text-align:center;
+  margin-top:10px; }
+
+/* res */
+@media (max-width: 479px) {
+  /* nav img { height: 40px; } */
+  .container { width: 90%; padding: 15px; }
+  input[type=text] { width: 100%; }
+  .task-top { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .btn-group { display: flex; flex-wrap: wrap; gap: 4px; }
+  .btn-group button { flex: 1; font-size: 11px; }
+  .reminder-section { flex-direction: column; gap: 4px; }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  /* nav img { height: 45px; } */
+  .container { width: 85%; padding: 18px; }
+  input[type=text] { width: 80%; }
+  .task-top { flex-direction: row; flex-wrap: wrap; gap: 6px; }
+  .btn-group { display: flex; flex-wrap: wrap; gap: 5px; }
+  .btn-group button { font-size: 12px; }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  nav img { height: 50px; }
+  .container { width: 70%; padding: 20px; }
+  input[type=text] { width: 90%; }
+  .task-top { flex-direction: row; gap: 8px; }
+  .btn-group button { font-size: 13px; }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* nav img { height: 55px; } */
+  .container { width: 60%; padding: 22px; }
+  input[type=text] { width: 85%; }
+  .task-top { flex-direction: row; gap: 10px; }
+  .btn-group button { font-size: 14px; }
+}
+
+@media (min-width: 1200px) {
+  /* nav img { height: 60px; } */
+  .container { width: 500px; padding: 25px; }
+  input[type=text] { width: 90%; }
+  .task-top { flex-direction: row; gap: 12px; }
+  .btn-group button { font-size: 14px; }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <img src="./logo.png">
+</nav>
+
+<div class="container">
+  <h2>To-Do List</h2>
+  <input type="text" id="taskInput" placeholder="enter a task">
+  <button class="add-btn" onclick="addTask()">Add</button>
+  <ul id="taskList"></ul>
+  <div class="clear-btn-box">
+    <button class="clear-btn" onclick="clearAll()">Clear All</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
